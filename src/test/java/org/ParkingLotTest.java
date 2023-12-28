@@ -22,4 +22,8 @@ public class ParkingLotTest {
         Car car = new Car();
         Assert.assertTrue(parkingLot.unpark(car));
     }
+    @Test
+    public void givenParkingLot_ShouldReturnFullCapacity(){
+        Assert.assertTrue(parkingLot.checkFullCapacity());
+    }
 }

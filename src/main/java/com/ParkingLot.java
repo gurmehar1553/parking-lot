@@ -21,6 +21,10 @@ public class ParkingLot {
         space.remove(car);
         return true;
     }
+
+    public boolean checkFullCapacity() {
+        return space.size()==capacity;
+    }
 }
 
 
