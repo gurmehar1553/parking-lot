@@ -39,4 +39,15 @@ public class ParkingLot {
         this.fullCapacity = space.size() == capacity;
         return this.fullCapacity;
     }
+
+    public Car findCar(Car car) {
+        System.out.println(space.size());
+        for (Car c: space){
+
+            if (c.equals(car)){
+                return car;
+            }
+        }
+        return null;
+    }
 }

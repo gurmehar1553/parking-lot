@@ -15,12 +15,12 @@ public class ParkingLotTest {
     }
     @Test
     public void givenACar_ShouldBeAbleToPark(){
-        Car car = new Car();
+        Car car = new Car("white","PB 01 4564","Creta");
         Assert.assertTrue(parkingLot.park(car));
     }
     @Test
     public void givenACar_ShouldBeAbleToUnpark(){
-        Car car = new Car();
+        Car car = new Car("white","PB 01 4564","Creta");
         Assert.assertTrue(parkingLot.unpark(car));
     }
     @Test
@@ -32,5 +32,11 @@ public class ParkingLotTest {
         if(parkingLot.checkFullCapacity()){
             new AirportSecurity().redirectSecurityStaff();
         }
+    }
+    @Test
+    public void givenDriver_ShouldReturnCar(){
+        Car car = new Car("white","PB 01 4564","Creta");
+        Car actualCar = parkingLot.findCar(car);
+        Assert.assertEquals(car,actualCar);
     }
 }
