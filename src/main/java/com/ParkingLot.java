@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 public class ParkingLot {
     ArrayList<Car> space;
+    boolean fullCapacity;
     int capacity;
     public ParkingLot(){
         this.capacity = 100;
         space = new ArrayList<>(capacity);
+        fullCapacity = false;
     }
     public boolean park(Car car){
         if (space.size() < 100){
@@ -23,7 +25,10 @@ public class ParkingLot {
     }
 
     public boolean checkFullCapacity() {
-        return space.size()==capacity;
+        if (space.size()==capacity){
+            this.fullCapacity = true;
+        }
+        return this.fullCapacity;
     }
 }
 
