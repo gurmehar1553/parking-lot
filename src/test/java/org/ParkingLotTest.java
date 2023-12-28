@@ -1,5 +1,6 @@
 package org;
 
+import com.AirportSecurity;
 import com.Car;
 import com.ParkingLot;
 import org.junit.Assert;
@@ -25,5 +26,11 @@ public class ParkingLotTest {
     @Test
     public void givenParkingLot_ShouldReturnFullCapacity(){
         Assert.assertTrue(parkingLot.checkFullCapacity());
+    }
+    @Test
+    public void givenCapacityFull_RedirectSecurity(){
+        if(parkingLot.checkFullCapacity()){
+            new AirportSecurity().redirectSecurityStaff();
+        }
     }
 }
