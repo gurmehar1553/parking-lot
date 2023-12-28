@@ -14,6 +14,7 @@ public class ParkingLot {
     public boolean park(Car car){
         if (space.size() < 100){
             space.add(car);
+            checkFullCapacity();
             return true;
         }
         return false;
@@ -21,25 +22,12 @@ public class ParkingLot {
 
     public boolean unpark(Car car) {
         space.remove(car);
+        checkFullCapacity();
         return true;
     }
 
     public boolean checkFullCapacity() {
-        if (space.size()==capacity){
-            this.fullCapacity = true;
-        }
+        this.fullCapacity = space.size() == capacity;
         return this.fullCapacity;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
