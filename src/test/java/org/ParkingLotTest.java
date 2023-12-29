@@ -15,8 +15,10 @@ public class ParkingLotTest {
     }
     @Test
     public void givenACar_ShouldBeAbleToPark(){
-        Car car = new Car("white","PB 01 4564","Creta");
-        Assert.assertTrue(parkingLot.park(car));
+        Car car1 = new Car("white","PB 01 4564","Creta");
+        Car car2 = new Car("black","PB 02 9189","Brezza");
+        parkingLot.park(car2);
+        Assert.assertTrue(parkingLot.park(car1));
     }
     @Test
     public void givenACar_ShouldBeAbleToUnpark(){
@@ -35,8 +37,11 @@ public class ParkingLotTest {
     }
     @Test
     public void givenDriver_ShouldReturnCar(){
-        Car car = new Car("white","PB 01 4564","Creta");
-        Car actualCar = parkingLot.findCar(car);
-        Assert.assertEquals(car,actualCar);
+        Car car1 = new Car("white","PB 01 4564","Creta");
+        parkingLot.park(car1);
+        Car car2 = new Car("black","PB 02 9189","Brezza");
+        parkingLot.park(car2);
+        Car actualCar = parkingLot.findCar(car1);
+        Assert.assertEquals(car1,actualCar);
     }
 }

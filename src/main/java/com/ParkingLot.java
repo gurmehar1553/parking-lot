@@ -3,8 +3,8 @@ package com;
 import java.util.ArrayList;
 
 public class ParkingLot {
-    ArrayList<Car> space;
-    boolean fullCapacity;
+    static ArrayList<Car> space;
+    static boolean fullCapacity;
     int capacity;
     public ParkingLot(){
         this.capacity = 100;
@@ -41,9 +41,7 @@ public class ParkingLot {
     }
 
     public Car findCar(Car car) {
-        System.out.println(space.size());
         for (Car c: space){
-
             if (c.equals(car)){
                 return car;
             }
