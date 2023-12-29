@@ -1,10 +1,11 @@
 package com;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class ParkingLot {
     static ArrayList<Car> space;
-    static boolean fullCapacity;
+    boolean fullCapacity;
     int capacity;
     public ParkingLot(){
         this.capacity = 100;
@@ -18,6 +19,7 @@ public class ParkingLot {
     public boolean park(Car car){
         if (space.size() < 100){
             space.add(car);
+            car.setParkTime(LocalTime.now());
             checkFullCapacity();
             return true;
         }
@@ -31,6 +33,7 @@ public class ParkingLot {
      */
     public boolean unpark(Car car) {
         space.remove(car);
+        car.setUnparkTime(LocalTime.now());
         checkFullCapacity();
         return true;
     }
@@ -47,5 +50,10 @@ public class ParkingLot {
             }
         }
         return null;
+    }
+
+    public int calculateCharges(Car car) {
+        int timeParked = car.getUnparkTime().getHour() - car.getParkTime().getHour();
+        return (timeParked+1)*20;
     }
 }

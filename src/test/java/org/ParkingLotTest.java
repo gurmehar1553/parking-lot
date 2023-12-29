@@ -44,4 +44,13 @@ public class ParkingLotTest {
         Car actualCar = parkingLot.findCar(car1);
         Assert.assertEquals(car1,actualCar);
     }
+    @Test
+    public void givenCarParked_ShouldReturnLotCharges(){
+        Car car1 = new Car("white","PB 01 4564","Creta");
+        parkingLot.park(car1);
+        Car car2 = new Car("black","PB 02 9189","Brezza");
+        parkingLot.park(car2);
+        parkingLot.unpark(car1);
+        Assert.assertEquals(20,parkingLot.calculateCharges(car1));
+    }
 }
