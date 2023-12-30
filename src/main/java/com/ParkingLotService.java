@@ -1,5 +1,7 @@
 package com;
 
+import java.util.Map;
+
 public class ParkingLotService {
     ParkingLot[] parkingLots;
     ParkingAttendant parkingAttendant;
@@ -27,5 +29,18 @@ public class ParkingLotService {
             }
         }
         return cnt;
+    }
+
+    public int allotCarNearestSpace(Car car) {
+        int leastSpace = parkingLots[0].space.size();
+        int slotNumber = 0;
+        for (int i=0;i<10;i++){
+            if (leastSpace > parkingLots[i].space.size()){
+                leastSpace = parkingLots[i].space.size();
+                slotNumber = i;
+            }
+        }
+        parkingAttendant.allotSlot(car,parkingLots[slotNumber],slotNumber);
+        return slotNumber;
     }
 }
