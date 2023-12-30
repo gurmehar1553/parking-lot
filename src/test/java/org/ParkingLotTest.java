@@ -1,8 +1,6 @@
 package org;
 
-import com.AirportSecurity;
-import com.Car;
-import com.ParkingLot;
+import com.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,5 +50,15 @@ public class ParkingLotTest {
         parkingLot.park(car2);
         parkingLot.unpark(car1);
         Assert.assertEquals(20,parkingLot.calculateCharges(car1));
+    }
+    @Test
+    public void givenParkingAttendant_ShouldDirectEvenCarsToLots(){
+        Car[] cars = {
+                new Car("white","PB 01 4564","Creta"),
+                new Car("black","PB 02 9189","Brezza"),
+                new Car("red","CH 01 1234","Innova")
+        };
+        ParkingLotService parkingLotService = new ParkingLotService();
+        Assert.assertEquals(3,parkingLotService.allotCar(cars));
     }
 }

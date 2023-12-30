@@ -9,10 +9,19 @@ public class Car {
     String name;
     LocalTime parkTime;
     LocalTime unparkTime;
+    int slotNumber;
     public Car(String color,String numberPlate,String name){
         this.color = color;
         this.numberPlate = numberPlate;
         this.name = name;
+    }
+
+    public int getSlotNumber() {
+        return slotNumber;
+    }
+
+    public void setSlotNumber(int slotNumber) {
+        this.slotNumber = slotNumber;
     }
 
     public LocalTime getParkTime() {

@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class ParkingLot {
-    static ArrayList<Car> space;
+    public ArrayList<Car> space;
     boolean fullCapacity;
     int capacity;
     public ParkingLot(){
@@ -55,5 +55,9 @@ public class ParkingLot {
     public int calculateCharges(Car car) {
         int timeParked = car.getUnparkTime().getHour() - car.getParkTime().getHour();
         return (timeParked+1)*20;
+    }
+
+    public boolean getCapacity() {
+        return fullCapacity;
     }
 }
