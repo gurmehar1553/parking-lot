@@ -73,4 +73,17 @@ public class ParkingLotTest {
         Car car = new Car("white","CH 02 8674","Ecosport");
         Assert.assertEquals(3,parkingLotService.allotCarNearestSpace(car));
     }
+    @Test
+    public void givenParkingAttendant_ShouldParkLargeCarsWithHighestSpace(){
+        Car[] cars = {
+                new Car("white","PB 01 4564","Creta"),
+                new Car("black","PB 02 9189","Brezza"),
+                new Car("red","CH 01 1234","Innova"),
+                new Car("white","CH 02 2345","BMW")
+        };
+        ParkingLotService parkingLotService = new ParkingLotService();
+        parkingLotService.allotCar(cars);
+        Car car = new Car("white","PB 01 1234","Ciaz");
+        Assert.assertEquals(4,parkingLotService.allotCarHighestFreeSpace(car,parkingLot));
+    }
 }

@@ -43,4 +43,17 @@ public class ParkingLotService {
         parkingAttendant.allotSlot(car,parkingLots[slotNumber],slotNumber);
         return slotNumber;
     }
+
+    public int allotCarHighestFreeSpace(Car car, ParkingLot parkingLot) {
+        int maxFreeSpace = parkingLots[0].space.size();
+        int slotNumber = 0;
+        for (int i=0;i<10;i++){
+            if (maxFreeSpace > parkingLots[i].space.size()){
+                maxFreeSpace = parkingLots[i].space.size();
+                slotNumber = i;
+            }
+        }
+        parkingAttendant.allotSlot(car,parkingLots[slotNumber],slotNumber);
+        return slotNumber;
+    }
 }
