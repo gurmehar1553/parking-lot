@@ -3,7 +3,7 @@ package com;
 import java.util.Map;
 
 public class ParkingLotService {
-    ParkingLot[] parkingLots;
+    public ParkingLot[] parkingLots;
     ParkingAttendant parkingAttendant;
     public ParkingLotService(){
         parkingLots = new ParkingLot[10];

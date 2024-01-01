@@ -5,6 +5,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParkingLotTest {
     ParkingLot parkingLot;
     @Before
@@ -85,5 +88,21 @@ public class ParkingLotTest {
         parkingLotService.allotCar(cars);
         Car car = new Car("white","PB 01 1234","Ciaz");
         Assert.assertEquals(4,parkingLotService.allotCarHighestFreeSpace(car,parkingLot));
+    }
+    @Test
+    public void givenPolice_ShouldReturnLocationOfWhiteCars(){
+        Car[] cars = {
+                new Car("white","PB 01 4564","Creta"),
+                new Car("black","PB 02 9189","Brezza"),
+                new Car("red","CH 01 1234","Innova"),
+                new Car("white","CH 02 2345","BMW")
+        };
+        ParkingLotService parkingLotService = new ParkingLotService();
+        parkingLotService.allotCar(cars);
+        List<Integer> actualList = new PoliceDept().findCarFromGivenColor("white",parkingLotService);
+        List<Integer> expectedList = new ArrayList<>();
+        expectedList.add(0);
+        expectedList.add(3);
+        Assert.assertEquals(expectedList,actualList);
     }
 }
