@@ -1,5 +1,7 @@
 package com;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class ParkingLotService {
@@ -55,5 +57,23 @@ public class ParkingLotService {
         }
         parkingAttendant.allotSlot(car,parkingLots[slotNumber],slotNumber);
         return slotNumber;
+    }
+
+    public List<Car> findCarsParkedLast30min() {
+        List<Car> listCars = new ArrayList<>();
+        for (ParkingLot parkingLot : parkingLots){
+            findCarsParkedLast30min(parkingLot,listCars);
+        }
+        return listCars;
+    }
+
+    private void findCarsParkedLast30min(ParkingLot parkingLot,List<Car> listCars) {
+        if (!parkingLot.space.isEmpty()){
+            for (Car car:parkingLot.space){
+                if (car.getUnparkTime().getMinute() - car.getParkTime().getMinute() == 30){
+                    listCars.add(car);
+                }
+            }
+        }
     }
 }
