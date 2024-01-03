@@ -123,4 +123,17 @@ public class ParkingLotTest {
         Assert.assertEquals(location,ans.getSlotNumber());
         Assert.assertEquals("Aman",parkingLotService.parkingAttendant.getAttendantName());
     }
+    @Test
+    public void givenParkingLot_ShouldReturnLocationOfBMW(){
+        Car[] cars = {
+                new Car("white","PB 01 4564","Creta"),
+                new Car("black","PB 02 9189","Brezza"),
+                new Car("red","CH 01 1234","Innova"),
+                new Car("white","CH 02 2345","BMW"),
+                new Car("blue","PB 01 2345","Toyota")
+        };
+        ParkingLotService parkingLotService = new ParkingLotService();
+        parkingLotService.allotCar(cars);
+        Assert.assertEquals(3,new PoliceDept().findCarFromGivenName("BMW",parkingLotService));
+    }
 }

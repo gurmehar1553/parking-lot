@@ -38,4 +38,22 @@ public class PoliceDept {
         }
         return null;
     }
+    public int findCarFromGivenName(String name, ParkingLotService parkingLotService) {
+        for (ParkingLot parkingLot : parkingLotService.parkingLots){
+            Car car = this.findCar(name,parkingLot);
+            if (car != null){
+                return car.getSlotNumber();
+            }
+        }
+        return -1;
+    }
+
+    private Car findCar(String name, ParkingLot parkingLot) {
+        for (Car car : parkingLot.space){
+            if (car.name.equals(name)){
+                return car;
+            }
+        }
+        return null;
+    }
 }
