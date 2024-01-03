@@ -19,4 +19,23 @@ public class PoliceDept {
             }
         }
     }
+
+    public Car findParticularCar(String color, String name,ParkingLotService parkingLotService ) {
+        for (ParkingLot parkingLot : parkingLotService.parkingLots){
+            Car ans = this.findCar(color,name,parkingLot);
+            if (ans != null){
+                return ans;
+            }
+        }
+        return null;
+    }
+
+    private Car findCar(String color, String name, ParkingLot parkingLot) {
+        for (Car car: parkingLot.space){
+            if (car.color.equals(color) && car.name.equals(name)){
+                return car;
+            }
+        }
+        return null;
+    }
 }

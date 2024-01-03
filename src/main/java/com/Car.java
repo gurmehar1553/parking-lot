@@ -7,6 +7,15 @@ public class Car {
     String color;
     String numberPlate;
     String name;
+
+    public String getNumberPlate() {
+        return numberPlate;
+    }
+
+    public void setNumberPlate(String numberPlate) {
+        this.numberPlate = numberPlate;
+    }
+
     LocalTime parkTime;
     LocalTime unparkTime;
     int slotNumber;

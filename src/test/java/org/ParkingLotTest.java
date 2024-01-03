@@ -105,4 +105,22 @@ public class ParkingLotTest {
         expectedList.add(3);
         Assert.assertEquals(expectedList,actualList);
     }
+    @Test
+    public void givenPolice_ShouldReturnLocationPlateBlueToyota(){
+        Car[] cars = {
+                new Car("white","PB 01 4564","Creta"),
+                new Car("black","PB 02 9189","Brezza"),
+                new Car("red","CH 01 1234","Innova"),
+                new Car("white","CH 02 2345","BMW"),
+                new Car("blue","PB 01 2345","Toyota")
+        };
+        ParkingLotService parkingLotService = new ParkingLotService();
+        parkingLotService.allotCar(cars);
+        String plateNumber = "PB 01 2345";
+        int location = 4;
+        Car ans = new PoliceDept().findParticularCar("blue","Toyota",parkingLotService);
+        Assert.assertEquals(plateNumber,ans.getNumberPlate());
+        Assert.assertEquals(location,ans.getSlotNumber());
+        Assert.assertEquals("Aman",parkingLotService.parkingAttendant.getAttendantName());
+    }
 }

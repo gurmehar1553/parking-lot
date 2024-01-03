@@ -4,13 +4,13 @@ import java.util.Map;
 
 public class ParkingLotService {
     public ParkingLot[] parkingLots;
-    ParkingAttendant parkingAttendant;
+    public ParkingAttendant parkingAttendant;
     public ParkingLotService(){
         parkingLots = new ParkingLot[10];
         for (int i=0;i<10;i++){
             parkingLots[i] = new ParkingLot();
         }
-        parkingAttendant = new ParkingAttendant();
+        parkingAttendant = new ParkingAttendant("Aman");
     }
     public int allotCar(Car[] cars) {
         int slotNumber = 0;
